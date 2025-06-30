@@ -16,7 +16,7 @@ The primary method for invoking a command will be a slash-command interface.
 ## 3. Functional Requirements
 
 - **Command Recognition:** The system MUST detect user input that begins with the `/` character as a command invocation.
-- **Command File Loading:** The system MUST be able to locate and read the content of a corresponding `.md` file from the pre-defined directory (`/Users/hooooonje/genies-lamp/commands/gemini/`).
+- **Command File Loading:** The system MUST be able to locate and read the content of a corresponding `.md` file. The path is constructed dynamically relative to the project's root directory (e.g., `./commands/gemini/`). This ensures portability across different machines and users.
 - **Persona Adoption:** The content of the loaded `.md` file MUST override the system's current operational instructions, effectively setting a new persona, protocol, and goal for the duration of the task.
 - **Command Listing:** The system SHOULD provide a mechanism for the user to discover available commands (e.g., a `/list` or `/help` command).
 
