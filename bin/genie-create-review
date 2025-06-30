@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 1. 현재 브랜치 이름 가져오기
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+# 2. 브랜치 이름에서 Jira 이슈 키 추출 (예: feature/PROJ-123)
+issue_key=$(echo "$branch_name" | grep -oE '[A-Z]+-[0-9]+')
+
+if [ -z "$issue_key" ]; then
+  echo "Error: Could not find Jira issue key in branch name."
+  exit 1
+fi
+
+# 3. Jira에서 이슈 정보 가져오기 (Jira CLI 또는 API 사용)
+# (이 부분은 실제 Jira 연동 설정이 필요합니다)
+issue_title=$(jira issue view "$issue_key" --json | jq -r '.fields.summary')
+issue_description=$(jira issue view "$issue_key" --json | jq -r '.fields.description')
+
+# 4. Gemini에게 전달할 프롬프트 생성
+prompt="
+Please review the code for the following Jira issue.
+
+**Issue Title:** $issue_title
+**Issue Description:**
+$issue_description
+
+**Changed Files:**
+$(git diff --name-only main)
+"
+
+# 5. Gemini CLI 실행 (이 부분은 Gemini CLI의 실제 호출 방식에 따라 달라집니다)
+gemini-cli --prompt "$prompt"
