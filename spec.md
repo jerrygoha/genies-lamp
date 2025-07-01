@@ -20,6 +20,13 @@ The primary method for invoking a command will be a slash-command interface.
 - **Persona Adoption:** The content of the loaded `.md` file MUST override the system's current operational instructions, effectively setting a new persona, protocol, and goal for the duration of the task.
 - **Command Listing:** The system SHOULD provide a mechanism for the user to discover available commands (e.g., a `/list` or `/help` command).
 
+- **Web Crawler - Image Download:** The system MUST be able to download original images from DC Inside gallery posts. It should prioritize downloading from the "원본 첨부파일" (Original Attachments) section. If not available, it should attempt to extract images embedded directly in the post body.
+- **Web Crawler - Image Management:** Downloaded images MUST retain their original filenames. In case of duplicates, a distinguishing suffix MUST be added (e.g., `image.jpg` -> `image_1.jpg`). Images will be temporarily saved to a local directory (`./downloads/dcinside_images`).
+
+## 3.1. Configuration Management
+
+- **Sensitive Information Handling:** All sensitive configuration values (e.g., target gallery ID, NAS path, user filtering criteria) MUST NOT be hardcoded in the source code or committed to Git. These values MUST be managed via environment variables or a `.env` file, which is excluded from version control.
+
 ## 4. Success Criteria
 
 The primary measure of success for this project is the **quality and reliability of the output**, not the speed of the response.
