@@ -6,6 +6,10 @@
 
 To provide a set of custom, file-based commands that, when invoked within the Gemini CLI, load specific personas and protocols for Gemini to follow. This transforms vague requirements into precise, actionable outcomes, making your development process more efficient and reliable.
 
+## Guiding Principles
+
+All AI interactions and command definitions are governed by the principles outlined in [`gemini.md`](./gemini.md). This file serves as the foundational instruction set for the AI, ensuring all contributions are consistent, high-quality, and aligned with the project's objectives.
+
 ## Setup
 
 1.  **Clone the repository:**
