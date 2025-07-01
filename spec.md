@@ -33,6 +33,10 @@ The primary measure of success for this project is the **quality and reliability
 
 - **Core Metric:** The system must faithfully adhere to the protocols defined in its command files, such as the "Think Hard Protocol." It should prioritize deep thinking, autonomous research, and context-aware questioning to provide well-reasoned, reliable answers and minimize hallucinations. The user must feel that the responses are the product of deep understanding, not superficial pattern matching.
 
-## 5. Edge Cases & Error Handling
+## 5. Constraints
+
+- **Deployment Environment:** The entire `genies-lamp` project, including all its components (e.g., web crawler), MUST be implemented and deployed on Oracle Cloud Infrastructure (OCI).
+
+## 6. Edge Cases & Error Handling
 
 - **Non-Existent Command:** If a user enters a command that does not have a corresponding file (e.g., `/non_existent_command`), the system MUST NOT simply return an error. Instead, it SHOULD search for the most similarly named command within the `commands/gemini/` directory and respond with a helpful suggestion, such as, "Command not found. Did you mean `/existing_command`?"
